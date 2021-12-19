@@ -17,7 +17,7 @@ namespace DBCourseProject.Presentation
         {
             var services = new ServiceCollection();
             services.AddDbContext<CourseProjectContext>();
-            services.AddScoped<IOService>();
+            services.AddTransient<IOService>();
             ServiceProvider = services.BuildServiceProvider();
         }
 

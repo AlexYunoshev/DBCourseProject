@@ -1,5 +1,6 @@
 ﻿using DBCourseProject.DataAccess;
 using DBCourseProject.Domain;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -40,9 +41,15 @@ namespace DBCourseProject.BusinessLogic
             return dataOutput;
         }
 
-        public List<Department> SplitData(List<string[]> data)
+        public void SplitData(List<string[]> data,
+            out List<Department> departmentsOut, 
+            out List<List<FreePlate>> freePlatesOut,
+            out List<List<PayablePlate>> payablePlatesOut)
         {
-            var departments = new List<Department>();
+            departmentsOut = new List<Department>();
+            freePlatesOut = new List<List<FreePlate>>();
+            payablePlatesOut = new List<List<PayablePlate>>();
+
             for (int i = 0; i < data.Count; i++)
             {
                 var departmentId = data[i][0];
@@ -69,57 +76,107 @@ namespace DBCourseProject.BusinessLogic
                     DepartmentName = dep      
                 };
 
-                _context.Departments.Add(department);
-                //_context.SaveChanges();
+                departmentsOut.Add(department);
 
-                //var freePlates = new List<FreePlate>();
+                var freePlates = new List<FreePlate>();
                 foreach (var number in freeSplit)
                 {
                     var freePlate = new FreePlate() 
                     { 
                         PlateValue = number,
+                        Department = department
                     };
-                    department.FreePlates.Add(freePlate);
+                    freePlates.Add(freePlate);    
                 }
-                _context.SaveChanges();
-
-                //var paymentPlates = new List<PayablePlate>();
-                //foreach (var number in payableSplit)
-                //{
-                //    var payablePlate = new PayablePlate()
-                //    {
-                //        PlateValue = number,
-                //        Department = department
-                //        //DepartmentId = department.Id
-                //    };
-                //    _context.PayablePlates.Add(payablePlate);
-                //    //paymentPlates.Add(payablePlate);
-                //}
-
-                //department.FreePlates = freePlates;
-                //department.PayablePlates = paymentPlates;
-                //_context.SaveChanges();
-
-                //_context.FreePlates.AddRange(freePlates);
-                //_context.PayablePlates.AddRange(paymentPlates);
+                freePlatesOut.Add(freePlates);
 
 
-
-
-                //department.FreePlates = freePlates;
-                //department.PayablePlates = paymentPlates;
-
-                //departments.Add(department);
-            }
-            _context.SaveChanges();
-            return departments;
+                var paymentPlates = new List<PayablePlate>();
+                foreach (var number in payableSplit)
+                {
+                    var payablePlate = new PayablePlate()
+                    {
+                        PlateValue = number,
+                        Department = department
+                    };
+                    paymentPlates.Add(payablePlate);
+                }
+                payablePlatesOut.Add(paymentPlates);
+            }            
         }
 
-        //public void InitializeDatabase(List<Department> departments)
+
+        public void InitializeDepartments(List<Department> departments)
+        {
+            using (CourseProjectContext db = new CourseProjectContext())
+            {
+                foreach (var department in departments)
+                {
+                    db.Departments.Add(department);
+                }
+                db.SaveChanges();
+            }    
+        }
+
+        public void InitializeFreePlates(List<List<FreePlate>> freePlates)
+        {
+            using (CourseProjectContext db = new CourseProjectContext())
+            {
+               
+                foreach (var plates in freePlates)
+                {
+                    var plateDepartmentId = plates[0].Department.DepartmentId;
+                    var department = db.Departments
+                        .Where(d => d.DepartmentId == plateDepartmentId)
+                        .Include(d => d.FreePlates)
+                        .FirstOrDefault();
+                    department.FreePlates = new List<FreePlate>(plates);
+                    db.SaveChanges();
+                }
+
+
+            }
+               
+        }
+
+        public void InitializePayablePlates(List<List<PayablePlate>> payablePlates)
+        {
+            using (CourseProjectContext db = new CourseProjectContext())
+            {
+                foreach (var plates in payablePlates)
+                {
+                    db.PayablePlates.AddRange(plates);
+                }
+                db.SaveChanges();
+            }
+             
+        }
+
+
+        //public void InitializeDepartments(List<Department> departments)
         //{
         //    foreach (var department in departments)
         //    {
         //        _context.Departments.Add(department);
+        //    }
+        //    _context.SaveChanges();
+        //}
+
+        //public void InitializeFreePlates(List<List<FreePlate>> freePlates)
+        //{
+        //    foreach (var plates in freePlates)
+        //    {
+        //        _context.FreePlates.AddRange(plates);
+        //    }
+
+        //    _context.SaveChanges();
+        //}
+
+        //public void InitializePayablePlates(List<List<PayablePlate>> payablePlates)
+        //{
+        //    foreach (var plates in payablePlates)
+        //    {
+        //        _context.PayablePlates.AddRange(plates);
         //    }
         //    _context.SaveChanges();
         //}

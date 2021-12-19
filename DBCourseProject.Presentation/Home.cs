@@ -1,5 +1,6 @@
 ﻿using DBCourseProject.BusinessLogic;
 using DBCourseProject.DataAccess;
+using DBCourseProject.Domain;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -25,8 +26,16 @@ namespace DBCourseProject.Presentation
 
             var data = _IOService.GetAllDepartments();
             var data2 = _IOService.ReadDataFromFile(filePath);
-            var data3 = _IOService.SplitData(data2);
-            //_IOService.InitializeDatabase(data3);
+
+            List<Department> departments;
+            List<List<FreePlate>> freePlates;
+            List<List<PayablePlate>> payablePlates;
+
+            _IOService.SplitData(data2, out departments, out freePlates, out payablePlates);
+
+            _IOService.InitializeDepartments(departments);
+            _IOService.InitializeFreePlates(freePlates);
+            //_IOService.InitializePayablePlates(payablePlates);
         }
     }
 }
