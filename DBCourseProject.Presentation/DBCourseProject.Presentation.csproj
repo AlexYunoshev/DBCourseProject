@@ -14,4 +14,9 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\DBCourseProject.BusinessLogic\DBCourseProject.BusinessLogic.csproj" />
+    <ProjectReference Include="..\DBCourseProject.DataAccess\DBCourseProject.DataAccess.csproj" />
+  </ItemGroup>
+
 </Project>
