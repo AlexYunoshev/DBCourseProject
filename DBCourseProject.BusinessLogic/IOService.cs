@@ -13,15 +13,14 @@ namespace DBCourseProject.BusinessLogic
 {
     public class IOService
     {
-        string query = "";
-        DataSet dataSet;
-
         public List<string[]> ReadDataFromFile(string filePath)
         {
             List<string[]> dataOutput = new List<string[]>();
             var separators = new string[] { ",\"", ",[" };
+            Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
             using (var streamReader = new StreamReader(filePath, Encoding.GetEncoding(1251)))
             {
+
                 bool skipHeaderLine = false;
                 while(!streamReader.EndOfStream)
                 {
@@ -101,61 +100,5 @@ namespace DBCourseProject.BusinessLogic
                 payablePlatesOut.Add(paymentPlates);
             }            
         }
-
-
-        public int InsertDepartment(Department department)
-        {
-            query = Commands.InsertDepartment(department);
-            ConnectedData.SetCommand(query);
-            int count = ConnectedData.UpdateData();
-            return count;
-        }
-
-        public int InsertFreePlate(FreePlate plate)
-        {
-            query = Commands.InsertFreePlate(plate);
-            ConnectedData.SetCommand(query);
-            int count = ConnectedData.UpdateData();
-            return count;
-        }
-
-        public int InsertPayablePlate(PayablePlate plate)
-        {
-            query = Commands.InsertPayablePlate(plate);
-            ConnectedData.SetCommand(query);
-            int count = ConnectedData.UpdateData();
-            return count;
-        }
-
-
-
-
-        public List<Department> GetAllDepartments()
-        {
-            var departments = new List<Department>();
-            query = Commands.SelectDepartments();
-            ConnectedData.SetCommand(query);
-            int[] size = new int[2];
-            size = ConnectedData.GetRowAndColumnCount();
-            int row = size[0];
-            int column = size[1];
-
-            string[,] data = new string[row, column];
-            data = ConnectedData.GetTableData();
-
-            for (int i = 0; i < row; i++)
-            {
-                var department = new Department()
-                {
-                    DepartmentId = data[i, 3],
-                    City = data[i, 1],
-                    DepartmentName = data[i, 2]
-                };
-                departments.Add(department);
-            }
-
-            return departments;
-        }
-
     }
 }

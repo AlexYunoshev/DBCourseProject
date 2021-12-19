@@ -15,51 +15,52 @@ namespace DBCourseProject.Presentation
 {
     public partial class Home : Form
     {
-        private readonly IOService _IOService;
-        private const string filePath = @"D:\DesktopFolders\ProjectsProgr\ASP NET Core\DBCourseProject\DBCourseProject.DataAccess\data.csv";
+        private readonly DepartmentService _departmentService;
 
-        public Home()
+        public Home(DepartmentService departmentService)
         {
-            _IOService = (IOService)Program.ServiceProvider.GetService(typeof(IOService));
+
+            _departmentService = departmentService;
             InitializeComponent();
+            
 
-            //var data = _IOService.GetAllDepartments();
-            //var data2 = _IOService.ReadDataFromFile(filePath);
+        }
 
-            //List<Department> departments;
-            //List<List<FreePlate>> freePlates;
-            //List<List<PayablePlate>> payablePlates;
+        private void Home_Load(object sender, EventArgs e)
+        {
+            //BindingSource bindingSource = new BindingSource();
+            //bindingSource.DataSource = _DepartmentSerivce.GetAllDepartments();
+            //dgvMainData.DataSource = bindingSource;
 
-            //_IOService.SplitData(data2, out departments, out freePlates, out payablePlates);
+            var allDepartments = _departmentService.GetAllDepartments();
+           
 
-            //_IOService.InitializePayablePlates(payablePlates);
-
-            int count;
-
-            //var dep = new Department()
-            //{
-            //    City = "city",
-            //    DepartmentId = "123",
-            //    DepartmentName = "Name"
-            //};
-            //count = _IOService.InsertDepartment(dep);
-
-            var free = new FreePlate()
+            dgvMainData.RowCount = allDepartments.Count; 
+            for (int i = 0; i < allDepartments.Count; i++)
             {
-                PlateValue = "ax0549cm",
-                DepartmentId = 1
+                dgvMainData[0, i].Value = allDepartments[i].DepartmentId; 
+                dgvMainData[1, i].Value = allDepartments[i].City; 
+                dgvMainData[2, i].Value = allDepartments[i].DepartmentName;
 
-            };
-            count = _IOService.InsertFreePlate(free);
+                var freePlates = _departmentService.GetAllFreePlatesByDepartment(allDepartments[i].Id);
+                var payablePlates = _departmentService.GetAllPayablePlatesByDepartment(allDepartments[i].Id);
 
+                string plates = "";
+                foreach (var plate in freePlates)
+                {
+                    plates += plate.PlateValue + ", ";
+                }
+                plates = plates.Remove(plates.Length - 2, 2);
+                dgvMainData[3, i].Value = plates;
 
-            var payable = new PayablePlate()
-            {
-                PlateValue = "ax0549cc",
-                DepartmentId = 1
-
-            };
-            count = _IOService.InsertPayablePlate(payable);
+                plates = "";
+                foreach (var plate in payablePlates)
+                {
+                    plates += plate.PlateValue + ", ";
+                }
+                plates = plates.Remove(plates.Length - 2, 2);
+                dgvMainData[4, i].Value = plates;
+            }
         }
     }
 }
