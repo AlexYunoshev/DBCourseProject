@@ -105,11 +105,30 @@ namespace DBCourseProject.BusinessLogic
 
         public int InsertDepartment(Department department)
         {
-            query = Commands.InsertDepartments(department);
+            query = Commands.InsertDepartment(department);
             ConnectedData.SetCommand(query);
             int count = ConnectedData.UpdateData();
             return count;
         }
+
+        public int InsertFreePlate(FreePlate plate)
+        {
+            query = Commands.InsertFreePlate(plate);
+            ConnectedData.SetCommand(query);
+            int count = ConnectedData.UpdateData();
+            return count;
+        }
+
+        public int InsertPayablePlate(PayablePlate plate)
+        {
+            query = Commands.InsertPayablePlate(plate);
+            ConnectedData.SetCommand(query);
+            int count = ConnectedData.UpdateData();
+            return count;
+        }
+
+
+
 
         public List<Department> GetAllDepartments()
         {

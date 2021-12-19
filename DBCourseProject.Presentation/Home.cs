@@ -34,13 +34,32 @@ namespace DBCourseProject.Presentation
 
             //_IOService.InitializePayablePlates(payablePlates);
 
-            var dep = new Department()
+            int count;
+
+            //var dep = new Department()
+            //{
+            //    City = "city",
+            //    DepartmentId = "123",
+            //    DepartmentName = "Name"
+            //};
+            //count = _IOService.InsertDepartment(dep);
+
+            var free = new FreePlate()
             {
-                City = "city",
-                DepartmentId = "123",
-                DepartmentName = "Name"
+                PlateValue = "ax0549cm",
+                DepartmentId = 1
+
             };
-            int count = _IOService.InsertDepartment(dep);
+            count = _IOService.InsertFreePlate(free);
+
+
+            var payable = new PayablePlate()
+            {
+                PlateValue = "ax0549cc",
+                DepartmentId = 1
+
+            };
+            count = _IOService.InsertPayablePlate(payable);
         }
     }
 }

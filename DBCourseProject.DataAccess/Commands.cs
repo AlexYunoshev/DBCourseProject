@@ -16,7 +16,7 @@ namespace DBCourseProject.DataAccess
         }
 
 
-        public static string InsertDepartments(Department department)
+        public static string InsertDepartment(Department department)
         {
             string cmd = @"insert into 
             dbo.Departments(City, DepartmentName, DepartmentId)
@@ -24,10 +24,18 @@ namespace DBCourseProject.DataAccess
             return cmd;
         }
 
-        public static string InsertFreePlates(FreePlate plate)
+        public static string InsertFreePlate(FreePlate plate)
         {
             string cmd = @"insert into 
             dbo.FreePlates(DepartmentId, PlateValue)
+            values(" + plate.DepartmentId + ", '" + plate.PlateValue + "')";
+            return cmd;
+        }
+
+        public static string InsertPayablePlate(PayablePlate plate)
+        {
+            string cmd = @"insert into 
+            dbo.PayablePlates(DepartmentId, PlateValue)
             values(" + plate.DepartmentId + ", '" + plate.PlateValue + "')";
             return cmd;
         }
