@@ -62,6 +62,19 @@ namespace DBCourseProject.BusinessLogic
             return null;
         }
 
+        public int RemoveFreePlateByPlateValue(string plateValue)
+        {
+            query = Commands.RemoveFreePlate(plateValue);
+            ConnectedData.SetCommand(query);
+            return ConnectedData.UpdateData();
+        }
+
+        public int RemovePayablePlateByPlateValue(string plateValue)
+        {
+            query = Commands.RemovePayablePlate(plateValue);
+            ConnectedData.SetCommand(query);
+            return ConnectedData.UpdateData();
+        }
 
         public List<Department> GetAllDepartments()
         {

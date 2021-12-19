@@ -52,11 +52,25 @@ namespace DBCourseProject.DataAccess
             return cmd;
         }
 
+        public static string RemoveFreePlate(string plateValue)
+        {
+            string cmd = @"delete from 
+            dbo.FreePlates where PlateValue = N'" + plateValue + "'";
+            return cmd;
+        }
+
         public static string InsertPayablePlate(PayablePlate plate)
         {
             string cmd = @"insert into 
             dbo.PayablePlates(DepartmentId, PlateValue)
             values(" + plate.DepartmentId + ", N'" + plate.PlateValue + "')";
+            return cmd;
+        }
+
+        public static string RemovePayablePlate(string plateValue)
+        {
+            string cmd = @"delete from 
+            dbo.PayablePlates where PlateValue = N'" + plateValue + "'";
             return cmd;
         }
     }
