@@ -3,6 +3,7 @@ using DBCourseProject.Domain;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -12,12 +13,8 @@ namespace DBCourseProject.BusinessLogic
 {
     public class IOService
     {
-        private readonly CourseProjectContext _context;
-
-        public IOService(CourseProjectContext context)
-        {
-            _context = context;
-        }
+        string query = "";
+        DataSet dataSet;
 
         public List<string[]> ReadDataFromFile(string filePath)
         {
@@ -106,84 +103,39 @@ namespace DBCourseProject.BusinessLogic
         }
 
 
-        public void InitializeDepartments(List<Department> departments)
+        public int InsertDepartment(Department department)
         {
-            using (CourseProjectContext db = new CourseProjectContext())
-            {
-                foreach (var department in departments)
-                {
-                    db.Departments.Add(department);
-                }
-                db.SaveChanges();
-            }    
+            query = Commands.InsertDepartments(department);
+            ConnectedData.SetCommand(query);
+            int count = ConnectedData.UpdateData();
+            return count;
         }
-
-        public void InitializeFreePlates(List<List<FreePlate>> freePlates)
-        {
-            using (CourseProjectContext db = new CourseProjectContext())
-            {
-               
-                foreach (var plates in freePlates)
-                {
-                    var plateDepartmentId = plates[0].Department.DepartmentId;
-                    var department = db.Departments
-                        .Where(d => d.DepartmentId == plateDepartmentId)
-                        .Include(d => d.FreePlates)
-                        .FirstOrDefault();
-                    department.FreePlates = new List<FreePlate>(plates);
-                    db.SaveChanges();
-                }
-
-
-            }
-               
-        }
-
-        public void InitializePayablePlates(List<List<PayablePlate>> payablePlates)
-        {
-            using (CourseProjectContext db = new CourseProjectContext())
-            {
-                foreach (var plates in payablePlates)
-                {
-                    db.PayablePlates.AddRange(plates);
-                }
-                db.SaveChanges();
-            }
-             
-        }
-
-
-        //public void InitializeDepartments(List<Department> departments)
-        //{
-        //    foreach (var department in departments)
-        //    {
-        //        _context.Departments.Add(department);
-        //    }
-        //    _context.SaveChanges();
-        //}
-
-        //public void InitializeFreePlates(List<List<FreePlate>> freePlates)
-        //{
-        //    foreach (var plates in freePlates)
-        //    {
-        //        _context.FreePlates.AddRange(plates);
-        //    }
-
-        //    _context.SaveChanges();
-        //}
-
-        //public void InitializePayablePlates(List<List<PayablePlate>> payablePlates)
-        //{
-        //    foreach (var plates in payablePlates)
-        //    {
-        //        _context.PayablePlates.AddRange(plates);
-        //    }
-        //    _context.SaveChanges();
-        //}
 
         public List<Department> GetAllDepartments()
         {
-            return _context.Departments.ToList();
+            var departments = new List<Department>();
+            query = Commands.SelectDepartments();
+            ConnectedData.SetCommand(query);
+            int[] size = new int[2];
+            size = ConnectedData.GetRowAndColumnCount();
+            int row = size[0];
+            int column = size[1];
+
+            string[,] data = new string[row, column];
+            data = ConnectedData.GetTableData();
+
+            for (int i = 0; i < row; i++)
+            {
+                var department = new Department()
+                {
+                    DepartmentId = data[i, 3],
+                    City = data[i, 1],
+                    DepartmentName = data[i, 2]
+                };
+                departments.Add(department);
+            }
+
+            return departments;
         }
 
     }

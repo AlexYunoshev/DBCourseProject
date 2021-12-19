@@ -16,7 +16,6 @@ namespace DBCourseProject.Presentation
         static void ConfigureServices()
         {
             var services = new ServiceCollection();
-            services.AddDbContext<CourseProjectContext>();
             services.AddTransient<IOService>();
             ServiceProvider = services.BuildServiceProvider();
         }
