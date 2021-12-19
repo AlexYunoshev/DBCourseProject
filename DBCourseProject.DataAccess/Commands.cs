@@ -11,7 +11,6 @@ namespace DBCourseProject.DataAccess
     {
         public static string SelectDepartments()
         {
-            //string cmd = @"select City, DepartmentName, DepartmentId from dbo.Departments;";
             string cmd = @"select * from dbo.Departments;";
             return cmd;
         }
@@ -71,6 +70,28 @@ namespace DBCourseProject.DataAccess
         {
             string cmd = @"delete from 
             dbo.PayablePlates where PlateValue = N'" + plateValue + "'";
+            return cmd;
+        }
+
+        public static string RemoveFreePlatesByDepartmentId(int Id)
+        {
+            string cmd = @"delete from 
+            dbo.FreePlates where DepartmentId = " + Id;
+            return cmd;
+        }
+
+        public static string RemovePayablePlatesByDepartmentId(int Id)
+        {
+            string cmd = @"delete from 
+            dbo.PayablePlates where DepartmentId = " + Id;
+            return cmd;
+        }
+
+
+        public static string RemoveDepartmentById(int Id)
+        {
+            string cmd = @"delete from 
+            dbo.Departments where Id = " + Id;
             return cmd;
         }
     }

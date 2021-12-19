@@ -89,6 +89,8 @@ namespace DBCourseProject.Presentation
 
                 comboBoxRemoveFreePlateDepartmentId.Items.Add(department.DepartmentId);
                 comboBoxRemovePayablePlateDepartmentId.Items.Add(department.DepartmentId);
+
+                comboBoxRemoveDepartmentId.Items.Add(department.DepartmentId);
             }
 
             if (comboBoxAddFreePlateDepartmentId.Items.Count > 0)
@@ -106,14 +108,15 @@ namespace DBCourseProject.Presentation
                 comboBoxRemoveFreePlateDepartmentId.SelectedIndex = 0;
             }
 
-
             if (comboBoxRemovePayablePlateDepartmentId.Items.Count > 0)
             {
                 comboBoxRemovePayablePlateDepartmentId.SelectedIndex = 0;
             }
 
-            
-
+            if (comboBoxRemoveDepartmentId.Items.Count > 0)
+            {
+                comboBoxRemoveDepartmentId.SelectedIndex = 0;
+            }
         }
 
         private void buttonAddDepartment_Click(object sender, EventArgs e)
@@ -249,6 +252,20 @@ namespace DBCourseProject.Presentation
                 UpdateComboboxes();
             }
             else { MessageBox.Show("Something went wrong!"); }
+        }
+
+        private void buttonRemoveDepartment_Click(object sender, EventArgs e)
+        {
+            var departmentIdComboBox = comboBoxRemoveDepartmentId.SelectedItem.ToString();
+            var removedCount = _departmentService.RemoveDepartmentById(departmentIdComboBox);
+            if (removedCount > 0)
+            {
+                MessageBox.Show("Done");
+                LoadData();
+                UpdateComboboxes();
+            }
+            else { MessageBox.Show("Something went wrong!"); }
+
         }
     }
 }

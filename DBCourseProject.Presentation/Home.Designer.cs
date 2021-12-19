@@ -67,12 +67,17 @@ namespace DBCourseProject.Presentation
             this.buttonRemovePayablePlate = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.removeDepartmentBox = new System.Windows.Forms.GroupBox();
+            this.buttonRemoveDepartment = new System.Windows.Forms.Button();
+            this.label10 = new System.Windows.Forms.Label();
+            this.comboBoxRemoveDepartmentId = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMainData)).BeginInit();
             this.addDepartmentBox.SuspendLayout();
             this.addFreePlateBox.SuspendLayout();
             this.addPayeblePlateBox.SuspendLayout();
             this.removeFreePlateBox.SuspendLayout();
             this.removePayablePlateBox.SuspendLayout();
+            this.removeDepartmentBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgvMainData
@@ -441,12 +446,53 @@ namespace DBCourseProject.Presentation
             this.label7.TabIndex = 2;
             this.label7.Text = "Department ID";
             // 
+            // removeDepartmentBox
+            // 
+            this.removeDepartmentBox.Controls.Add(this.comboBoxRemoveDepartmentId);
+            this.removeDepartmentBox.Controls.Add(this.buttonRemoveDepartment);
+            this.removeDepartmentBox.Controls.Add(this.label10);
+            this.removeDepartmentBox.Location = new System.Drawing.Point(12, 507);
+            this.removeDepartmentBox.Name = "removeDepartmentBox";
+            this.removeDepartmentBox.Size = new System.Drawing.Size(266, 84);
+            this.removeDepartmentBox.TabIndex = 6;
+            this.removeDepartmentBox.TabStop = false;
+            this.removeDepartmentBox.Text = "Remove a department";
+            // 
+            // buttonRemoveDepartment
+            // 
+            this.buttonRemoveDepartment.Location = new System.Drawing.Point(6, 55);
+            this.buttonRemoveDepartment.Name = "buttonRemoveDepartment";
+            this.buttonRemoveDepartment.Size = new System.Drawing.Size(248, 23);
+            this.buttonRemoveDepartment.TabIndex = 8;
+            this.buttonRemoveDepartment.Text = "Remove";
+            this.buttonRemoveDepartment.UseVisualStyleBackColor = true;
+            this.buttonRemoveDepartment.Click += new System.EventHandler(this.buttonRemoveDepartment_Click);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(6, 29);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(84, 15);
+            this.label10.TabIndex = 2;
+            this.label10.Text = "Department ID";
+            // 
+            // comboBoxRemoveDepartmentId
+            // 
+            this.comboBoxRemoveDepartmentId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxRemoveDepartmentId.FormattingEnabled = true;
+            this.comboBoxRemoveDepartmentId.Location = new System.Drawing.Point(96, 21);
+            this.comboBoxRemoveDepartmentId.Name = "comboBoxRemoveDepartmentId";
+            this.comboBoxRemoveDepartmentId.Size = new System.Drawing.Size(158, 23);
+            this.comboBoxRemoveDepartmentId.TabIndex = 10;
+            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(1264, 681);
+            this.Controls.Add(this.removeDepartmentBox);
             this.Controls.Add(this.removePayablePlateBox);
             this.Controls.Add(this.removeFreePlateBox);
             this.Controls.Add(this.addPayeblePlateBox);
@@ -470,6 +516,8 @@ namespace DBCourseProject.Presentation
             this.removeFreePlateBox.PerformLayout();
             this.removePayablePlateBox.ResumeLayout(false);
             this.removePayablePlateBox.PerformLayout();
+            this.removeDepartmentBox.ResumeLayout(false);
+            this.removeDepartmentBox.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -514,5 +562,9 @@ namespace DBCourseProject.Presentation
         private System.Windows.Forms.Button buttonRemovePayablePlate;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.GroupBox removeDepartmentBox;
+        private System.Windows.Forms.ComboBox comboBoxRemoveDepartmentId;
+        private System.Windows.Forms.Button buttonRemoveDepartment;
+        private System.Windows.Forms.Label label10;
     }
 }

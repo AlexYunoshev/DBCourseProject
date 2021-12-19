@@ -76,6 +76,32 @@ namespace DBCourseProject.BusinessLogic
             return ConnectedData.UpdateData();
         }
 
+        public int RemoveFreePlatesByDepartmentId(int Id)
+        {
+            query = Commands.RemoveFreePlatesByDepartmentId(Id);
+            ConnectedData.SetCommand(query);
+            return ConnectedData.UpdateData();
+        }
+
+        public int RemovepayablePlatesByDepartmentId(int Id)
+        {
+            query = Commands.RemovePayablePlatesByDepartmentId(Id);
+            ConnectedData.SetCommand(query);
+            return ConnectedData.UpdateData();
+        }
+
+
+        public int RemoveDepartmentById(string departmentId)
+        {
+            var departmentDB = GetDepartment(departmentId);
+            RemoveFreePlatesByDepartmentId(departmentDB.Id);
+            RemovepayablePlatesByDepartmentId(departmentDB.Id);
+            query = Commands.RemoveDepartmentById(departmentDB.Id);
+            ConnectedData.SetCommand(query);
+            return ConnectedData.UpdateData();
+
+        }
+
         public List<Department> GetAllDepartments()
         {
             var departments = new List<Department>();
