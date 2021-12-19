@@ -3,14 +3,16 @@ using DBCourseProject.DataAccess;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DBCourseProject.DataAccess.Migrations
 {
     [DbContext(typeof(CourseProjectContext))]
-    partial class CourseProjectContextModelSnapshot : ModelSnapshot
+    [Migration("20211219133127_updateDepartments1")]
+    partial class updateDepartments1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -54,7 +56,7 @@ namespace DBCourseProject.DataAccess.Migrations
 
                     b.HasIndex("DepartmentId");
 
-                    b.ToTable("FreePlates");
+                    b.ToTable("FreePlate");
                 });
 
             modelBuilder.Entity("DBCourseProject.Domain.PayablePlate", b =>
@@ -72,7 +74,7 @@ namespace DBCourseProject.DataAccess.Migrations
 
                     b.HasIndex("DepartmentId");
 
-                    b.ToTable("PayablePlates");
+                    b.ToTable("PayablePlate");
                 });
 
             modelBuilder.Entity("DBCourseProject.Domain.FreePlate", b =>

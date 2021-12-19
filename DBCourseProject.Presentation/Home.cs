@@ -21,9 +21,12 @@ namespace DBCourseProject.Presentation
         public Home()
         {
             _IOService = (IOService)Program.ServiceProvider.GetService(typeof(IOService));
+            InitializeComponent();
+
             var data = _IOService.GetAllDepartments();
             var data2 = _IOService.ReadDataFromFile(filePath);
-            InitializeComponent();
+            var data3 = _IOService.SplitData(data2);
+            //_IOService.InitializeDatabase(data3);
         }
     }
 }

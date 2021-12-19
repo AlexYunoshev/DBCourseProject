@@ -11,8 +11,8 @@ namespace DBCourseProject.DataAccess
     public class CourseProjectContext : DbContext
     {
         public DbSet<Department> Departments { get; set; }
-        //public DbSet<NumberPlate> FreePlates { get; set; }
-        //public DbSet<NumberPlate> PayablePlates { get; set; }
+        public DbSet<FreePlate> FreePlates { get; set; }
+        public DbSet<PayablePlate> PayablePlates { get; set; }
 
         //public CourseProjectContext()
         //{
