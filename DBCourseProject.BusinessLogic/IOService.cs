@@ -69,40 +69,40 @@ namespace DBCourseProject.BusinessLogic
                     DepartmentName = dep      
                 };
 
-                //_context.Departments.Add(department);
+                _context.Departments.Add(department);
                 //_context.SaveChanges();
 
-                var freePlates = new List<FreePlate>();
+                //var freePlates = new List<FreePlate>();
                 foreach (var number in freeSplit)
                 {
                     var freePlate = new FreePlate() 
                     { 
                         PlateValue = number,
-                        Department = department
-                        //DepartmentId = department.Id
                     };
-                    freePlates.Add(freePlate);
+                    department.FreePlates.Add(freePlate);
                 }
+                _context.SaveChanges();
 
-                var paymentPlates = new List<PayablePlate>();
-                foreach (var number in payableSplit)
-                {
-                    var payablePlate = new PayablePlate()
-                    {
-                        PlateValue = number,
-                        Department = department
-                        //DepartmentId = department.Id
-                    };
-                    paymentPlates.Add(payablePlate);
-                }
+                //var paymentPlates = new List<PayablePlate>();
+                //foreach (var number in payableSplit)
+                //{
+                //    var payablePlate = new PayablePlate()
+                //    {
+                //        PlateValue = number,
+                //        Department = department
+                //        //DepartmentId = department.Id
+                //    };
+                //    _context.PayablePlates.Add(payablePlate);
+                //    //paymentPlates.Add(payablePlate);
+                //}
 
                 //department.FreePlates = freePlates;
                 //department.PayablePlates = paymentPlates;
                 //_context.SaveChanges();
 
-                _context.FreePlates.AddRange(freePlates);
-                _context.PayablePlates.AddRange(paymentPlates);
-                _context.SaveChanges();
+                //_context.FreePlates.AddRange(freePlates);
+                //_context.PayablePlates.AddRange(paymentPlates);
+
 
 
 
@@ -111,6 +111,7 @@ namespace DBCourseProject.BusinessLogic
 
                 //departments.Add(department);
             }
+            _context.SaveChanges();
             return departments;
         }
 
