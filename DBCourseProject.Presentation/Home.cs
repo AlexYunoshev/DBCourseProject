@@ -313,5 +313,31 @@ namespace DBCourseProject.Presentation
         {
             LoadData(Sort);
         }
+
+        private void buttonUpdateDepartment_Click(object sender, EventArgs e)
+        {
+
+            var departmentId = comboBoxEditDepartmentId.SelectedItem.ToString();
+            var departmentFromDB = _departmentService.GetDepartment(departmentId);
+            var departmentCity = textBoxEditDepartmentCity.Text;
+            var departmentName = textBoxEditDepartmentName.Text;
+
+            var department = new Department()
+            {
+                Id = departmentFromDB.Id,
+                DepartmentId = departmentId,
+                City = departmentCity,
+                DepartmentName = departmentName
+            };
+
+            var insertItemsCount = _departmentService.UpdateDepartment(department);
+            if (insertItemsCount > 0)
+            {
+                MessageBox.Show("Done");
+                LoadData(Sort);
+                UpdateComboboxes();
+            }
+            else { MessageBox.Show("Something went wrong!"); }
+        }
     }
 }

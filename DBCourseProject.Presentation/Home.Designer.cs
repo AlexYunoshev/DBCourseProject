@@ -541,6 +541,7 @@ namespace DBCourseProject.Presentation
             this.buttonUpdateDepartment.TabIndex = 8;
             this.buttonUpdateDepartment.Text = "Update";
             this.buttonUpdateDepartment.UseVisualStyleBackColor = true;
+            this.buttonUpdateDepartment.Click += new System.EventHandler(this.buttonUpdateDepartment_Click);
             // 
             // label11
             // 

@@ -80,9 +80,9 @@ namespace DBCourseProject.DataAccess
         {
             department.City = department.City.Replace("'", "\"");
             string cmd = @"update dbo.Departments set
-            City = '" + department.City + "', " +
-            "DepartmentName = '" + department.DepartmentName + "', " +
-            "DepartmentId = '" + department.DepartmentId + "', " +
+            City = N'" + department.City + "', " +
+            "DepartmentName = N'" + department.DepartmentName + "', " +
+            "DepartmentId = N'" + department.DepartmentId + "' " +
             "where Id = " + department.Id + ";";
             return cmd;
         }
