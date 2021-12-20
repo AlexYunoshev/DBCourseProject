@@ -50,6 +50,11 @@ namespace DBCourseProject.Presentation
                 dgvMainData[1, i].Value = allDepartments[i].City;
                 dgvMainData[2, i].Value = allDepartments[i].DepartmentName;
 
+                if (allDepartments[i].DepartmentId == "Ddd")
+                {
+
+                }
+
                 var freePlates = _departmentService.GetAllFreePlatesByDepartment(allDepartments[i].Id);
                 var payablePlates = _departmentService.GetAllPayablePlatesByDepartment(allDepartments[i].Id);
 
@@ -61,9 +66,10 @@ namespace DBCourseProject.Presentation
                 if (plates.Contains(", "))
                 {
                     plates = plates.Remove(plates.Length - 2, 2);
-                    dgvMainData[3, i].Value = plates;
+                    
                 }
-              
+                dgvMainData[3, i].Value = plates;
+
 
                 plates = "";
                 foreach (var plate in payablePlates)
@@ -73,8 +79,9 @@ namespace DBCourseProject.Presentation
                 if (plates.Contains(", "))
                 {
                     plates = plates.Remove(plates.Length - 2, 2);
-                    dgvMainData[4, i].Value = plates;
+                   
                 }
+                dgvMainData[4, i].Value = plates;
             }
         }
 

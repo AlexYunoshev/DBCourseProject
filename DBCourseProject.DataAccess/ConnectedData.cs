@@ -78,7 +78,8 @@ namespace DBCourseProject.DataAccess
                     if (dataReader[j].ToString() != "")
                         data[j] = dataReader[j].ToString();
                     else
-                        data[j] = "-";
+                        data[j] = "";
+                        //data[j] = "-";
                 }
             }
             dataReader.Close();
@@ -97,7 +98,8 @@ namespace DBCourseProject.DataAccess
                     if (dataReader[j].ToString() != "")
                         data[i, j] = dataReader[j].ToString();
                     else
-                        data[i, j] = "-";
+                        data[i, j] = "";
+                        //data[i, j] = "-";
                 }
                 i++;
             }
