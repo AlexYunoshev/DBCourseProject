@@ -100,5 +100,6 @@ namespace DBCourseProject.BusinessLogic
                 payablePlatesOut.Add(paymentPlates);
             }            
         }
+
     }
 }

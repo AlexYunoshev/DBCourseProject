@@ -80,10 +80,10 @@ namespace DBCourseProject.Presentation
             this.textBoxEditDepartmentCity = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.comboBoxSort = new System.Windows.Forms.ComboBox();
-            this.label15 = new System.Windows.Forms.Label();
             this.buttonUpdateDataSort = new System.Windows.Forms.Button();
             this.textBoxSearch = new System.Windows.Forms.TextBox();
             this.buttonSearch = new System.Windows.Forms.Button();
+            this.buttonCreateReport = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMainData)).BeginInit();
             this.addDepartmentBox.SuspendLayout();
             this.addFreePlateBox.SuspendLayout();
@@ -152,7 +152,7 @@ namespace DBCourseProject.Presentation
             this.addDepartmentBox.Controls.Add(this.labelDepartmentCity);
             this.addDepartmentBox.Controls.Add(this.textBoxAddDepartmentId);
             this.addDepartmentBox.Controls.Add(this.labelDepartmentId);
-            this.addDepartmentBox.Location = new System.Drawing.Point(200, 329);
+            this.addDepartmentBox.Location = new System.Drawing.Point(194, 329);
             this.addDepartmentBox.Name = "addDepartmentBox";
             this.addDepartmentBox.Size = new System.Drawing.Size(508, 131);
             this.addDepartmentBox.TabIndex = 1;
@@ -465,9 +465,9 @@ namespace DBCourseProject.Presentation
             this.removeDepartmentBox.Controls.Add(this.comboBoxRemoveDepartmentId);
             this.removeDepartmentBox.Controls.Add(this.buttonRemoveDepartment);
             this.removeDepartmentBox.Controls.Add(this.label10);
-            this.removeDepartmentBox.Location = new System.Drawing.Point(12, 483);
+            this.removeDepartmentBox.Location = new System.Drawing.Point(12, 496);
             this.removeDepartmentBox.Name = "removeDepartmentBox";
-            this.removeDepartmentBox.Size = new System.Drawing.Size(172, 108);
+            this.removeDepartmentBox.Size = new System.Drawing.Size(172, 95);
             this.removeDepartmentBox.TabIndex = 6;
             this.removeDepartmentBox.TabStop = false;
             this.removeDepartmentBox.Text = "Remove a department";
@@ -476,14 +476,14 @@ namespace DBCourseProject.Presentation
             // 
             this.comboBoxRemoveDepartmentId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxRemoveDepartmentId.FormattingEnabled = true;
-            this.comboBoxRemoveDepartmentId.Location = new System.Drawing.Point(6, 47);
+            this.comboBoxRemoveDepartmentId.Location = new System.Drawing.Point(6, 37);
             this.comboBoxRemoveDepartmentId.Name = "comboBoxRemoveDepartmentId";
             this.comboBoxRemoveDepartmentId.Size = new System.Drawing.Size(158, 23);
             this.comboBoxRemoveDepartmentId.TabIndex = 10;
             // 
             // buttonRemoveDepartment
             // 
-            this.buttonRemoveDepartment.Location = new System.Drawing.Point(6, 76);
+            this.buttonRemoveDepartment.Location = new System.Drawing.Point(6, 66);
             this.buttonRemoveDepartment.Name = "buttonRemoveDepartment";
             this.buttonRemoveDepartment.Size = new System.Drawing.Size(158, 23);
             this.buttonRemoveDepartment.TabIndex = 8;
@@ -494,7 +494,7 @@ namespace DBCourseProject.Presentation
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(6, 29);
+            this.label10.Location = new System.Drawing.Point(6, 20);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(84, 15);
             this.label10.TabIndex = 2;
@@ -583,24 +583,15 @@ namespace DBCourseProject.Presentation
             // 
             this.comboBoxSort.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxSort.FormattingEnabled = true;
-            this.comboBoxSort.Location = new System.Drawing.Point(18, 350);
+            this.comboBoxSort.Location = new System.Drawing.Point(18, 371);
             this.comboBoxSort.Name = "comboBoxSort";
             this.comboBoxSort.Size = new System.Drawing.Size(166, 23);
             this.comboBoxSort.TabIndex = 12;
             this.comboBoxSort.SelectedIndexChanged += new System.EventHandler(this.comboBoxSort_SelectedIndexChanged);
             // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(18, 332);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(28, 15);
-            this.label15.TabIndex = 11;
-            this.label15.Text = "Sort";
-            // 
             // buttonUpdateDataSort
             // 
-            this.buttonUpdateDataSort.Location = new System.Drawing.Point(18, 379);
+            this.buttonUpdateDataSort.Location = new System.Drawing.Point(18, 400);
             this.buttonUpdateDataSort.Name = "buttonUpdateDataSort";
             this.buttonUpdateDataSort.Size = new System.Drawing.Size(166, 23);
             this.buttonUpdateDataSort.TabIndex = 13;
@@ -610,7 +601,7 @@ namespace DBCourseProject.Presentation
             // 
             // textBoxSearch
             // 
-            this.textBoxSearch.Location = new System.Drawing.Point(18, 415);
+            this.textBoxSearch.Location = new System.Drawing.Point(18, 436);
             this.textBoxSearch.Name = "textBoxSearch";
             this.textBoxSearch.PlaceholderText = "Search...";
             this.textBoxSearch.Size = new System.Drawing.Size(166, 23);
@@ -618,7 +609,7 @@ namespace DBCourseProject.Presentation
             // 
             // buttonSearch
             // 
-            this.buttonSearch.Location = new System.Drawing.Point(18, 445);
+            this.buttonSearch.Location = new System.Drawing.Point(18, 466);
             this.buttonSearch.Name = "buttonSearch";
             this.buttonSearch.Size = new System.Drawing.Size(166, 23);
             this.buttonSearch.TabIndex = 15;
@@ -626,17 +617,27 @@ namespace DBCourseProject.Presentation
             this.buttonSearch.UseVisualStyleBackColor = true;
             this.buttonSearch.Click += new System.EventHandler(this.buttonSearch_Click);
             // 
+            // buttonCreateReport
+            // 
+            this.buttonCreateReport.Location = new System.Drawing.Point(18, 342);
+            this.buttonCreateReport.Name = "buttonCreateReport";
+            this.buttonCreateReport.Size = new System.Drawing.Size(166, 23);
+            this.buttonCreateReport.TabIndex = 16;
+            this.buttonCreateReport.Text = "Create a report";
+            this.buttonCreateReport.UseVisualStyleBackColor = true;
+            this.buttonCreateReport.Click += new System.EventHandler(this.buttonCreateReport_Click);
+            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ClientSize = new System.Drawing.Size(1264, 611);
+            this.ClientSize = new System.Drawing.Size(1264, 661);
+            this.Controls.Add(this.buttonCreateReport);
             this.Controls.Add(this.buttonSearch);
             this.Controls.Add(this.textBoxSearch);
             this.Controls.Add(this.buttonUpdateDataSort);
             this.Controls.Add(this.comboBoxSort);
-            this.Controls.Add(this.label15);
             this.Controls.Add(this.editDepartmentBox);
             this.Controls.Add(this.removeDepartmentBox);
             this.Controls.Add(this.removePayablePlateBox);
@@ -724,9 +725,9 @@ namespace DBCourseProject.Presentation
         private System.Windows.Forms.TextBox textBoxEditDepartmentCity;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.ComboBox comboBoxSort;
-        private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Button buttonUpdateDataSort;
         private System.Windows.Forms.TextBox textBoxSearch;
         private System.Windows.Forms.Button buttonSearch;
+        private System.Windows.Forms.Button buttonCreateReport;
     }
 }

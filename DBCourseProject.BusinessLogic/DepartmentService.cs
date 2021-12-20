@@ -209,9 +209,9 @@ namespace DBCourseProject.BusinessLogic
             return plates;
         }
 
-        public List<FreePlate> GetAllPayablePlatesByDepartment(int Id)
+        public List<PayablePlate> GetAllPayablePlatesByDepartment(int Id)
         {
-            var plates = new List<FreePlate>();
+            var plates = new List<PayablePlate>();
             query = Commands.SelectPayablePlatesByDepartment(Id);
             ConnectedData.SetCommand(query);
             int[] size = new int[2];
@@ -224,7 +224,7 @@ namespace DBCourseProject.BusinessLogic
 
             for (int i = 0; i < row; i++)
             {
-                var plate = new FreePlate()
+                var plate = new PayablePlate()
                 {
                     PlateId = Convert.ToInt32(data[i, 0]),
                     DepartmentId = Convert.ToInt32(data[i, 1]),

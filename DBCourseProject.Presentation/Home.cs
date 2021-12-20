@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -72,6 +73,11 @@ namespace DBCourseProject.Presentation
 
                 var freePlates = _departmentService.GetAllFreePlatesByDepartment(allDepartments[i].Id);
                 var payablePlates = _departmentService.GetAllPayablePlatesByDepartment(allDepartments[i].Id);
+
+                //allDepartments[i].FreePlates.AddRange(freePlates);
+                allDepartments[i].FreePlates = freePlates;
+                //allDepartments[i].PayablePlates.AddRange(payablePlates);
+                allDepartments[i].PayablePlates = payablePlates;
 
                 string plates = "";
                 foreach (var plate in freePlates)
@@ -374,6 +380,11 @@ namespace DBCourseProject.Presentation
                 var freePlates = _departmentService.GetAllFreePlatesByDepartment(allDepartments[i].Id);
                 var payablePlates = _departmentService.GetAllPayablePlatesByDepartment(allDepartments[i].Id);
 
+                //allDepartments[i].FreePlates.AddRange(freePlates);
+                allDepartments[i].FreePlates = freePlates;
+                //allDepartments[i].PayablePlates.AddRange(payablePlates);
+                allDepartments[i].PayablePlates = payablePlates;
+
                 string plates = "";
                 foreach (var plate in freePlates)
                 {
@@ -399,6 +410,18 @@ namespace DBCourseProject.Presentation
                 }
                 dgvMainData[4, i].Value = plates;
             }
+        }
+
+        public void CreateReport()
+        {
+            string outputJSON = Newtonsoft.Json.JsonConvert.SerializeObject(allDepartments, Newtonsoft.Json.Formatting.Indented);
+            var fileName = "Report-" + DateTime.Now.ToString("yyyyMMdd hh-mm-ss") + ".json";
+            File.WriteAllText(fileName, outputJSON + Environment.NewLine);
+        }
+
+        private void buttonCreateReport_Click(object sender, EventArgs e)
+        {
+            CreateReport();
         }
     }
 }
