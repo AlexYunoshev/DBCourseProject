@@ -70,6 +70,30 @@ namespace DBCourseProject.BusinessLogic
             return null;
         }
 
+        public Department GetDepartment(int id)
+        {
+            query = Commands.SelectDepartment(id);
+            ConnectedData.SetCommand(query);
+            int[] size = new int[2];
+            size = ConnectedData.GetRowAndColumnCount();
+            int row = size[0];
+            int column = size[1];
+            string[,] data = new string[row, column];
+            data = ConnectedData.GetTableData();
+            for (int i = 0; i < row; i++)
+            {
+                var department = new Department()
+                {
+                    Id = Convert.ToInt32(data[i, 0]),
+                    DepartmentId = data[i, 3],
+                    City = data[i, 1],
+                    DepartmentName = data[i, 2]
+                };
+                return department;
+            }
+            return null;
+        }
+
         public int RemoveFreePlateByPlateValue(string plateValue)
         {
             query = Commands.RemoveFreePlate(plateValue);
@@ -109,12 +133,10 @@ namespace DBCourseProject.BusinessLogic
             return ConnectedData.UpdateData();
         }
 
-        public List<Department> GetAllDepartments(Sort sortType)
+        public List<Department> GetAllDepartments(Sort sortType, string searchValue = null)
         {
             var departments = new List<Department>();
-            query = Commands.SelectDepartments(sortType);
-
-            
+            query = Commands.SelectDepartments(sortType, searchValue);      
             ConnectedData.SetCommand(query);
             int[] size = new int[2];
             size = ConnectedData.GetRowAndColumnCount();
@@ -137,6 +159,27 @@ namespace DBCourseProject.BusinessLogic
             }
 
             return departments;
+        }
+
+        public List<int> GetDepartmentsIdInPlatesByValue(string plateValue)
+        {
+            var listOfId = new List<int>();
+            query = Commands.SelectDepartmentsIdInPlatesByValue(plateValue);
+            ConnectedData.SetCommand(query);
+            int[] size = new int[2];
+            size = ConnectedData.GetRowAndColumnCount();
+            int row = size[0];
+            int column = size[1];
+
+            string[,] data = new string[row, column];
+            data = ConnectedData.GetTableData();
+
+            for (int i = 0; i < row; i++)
+            {
+                listOfId.Add(Convert.ToInt32(data[i, 0]));
+            }
+
+            return listOfId;
         }
 
         public List<FreePlate> GetAllFreePlatesByDepartment(int Id)

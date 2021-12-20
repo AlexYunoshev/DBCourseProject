@@ -9,49 +9,61 @@ namespace DBCourseProject.DataAccess
 {
     public static class Commands
     {
-        public static string SelectDepartments(Sort sortType)
+        public static string SelectDepartments(Sort sortType, string searchValue = null)
         {
             string cmd = "";
             cmd = @"select * from dbo.Departments ";
 
+            if (searchValue != null)
+            {
+                cmd += "where City like N'%" + searchValue + "%' " +
+                    "or DepartmentName like N'%" + searchValue + "%' " +
+                    "or DepartmentId like N'" + searchValue + "%' ";
+            }
+
             switch (sortType)
             {
                 case Sort.IdAsc:
-                    cmd += "order by DepartmentId asc";
+                    cmd += "order by DepartmentId asc ";
                     break;
                 case Sort.IdDesc:
-                    cmd += "order by DepartmentId desc";
+                    cmd += "order by DepartmentId desc ";
                     break;
                 case Sort.CityAsc:
-                    cmd += "order by City asc";
+                    cmd += "order by City asc ";
                     break;
                 case Sort.CityDesc:
-                    cmd += "order by City desc";
+                    cmd += "order by City desc ";
                     break;
                 case Sort.DepartmentAsc:
-                    cmd += "order by DepartmentName asc";
+                    cmd += "order by DepartmentName asc ";
                     break;
                 case Sort.DepartmentDesc:
-                    cmd += "order by DepartmentName desc";
+                    cmd += "order by DepartmentName desc ";
                     break;
             }
 
-            //if (sortType == Sort.IdAsc) { cmd += "order by DepartmentId asc"; }
-            //else if (sortType == Sort.IdDesc) { cmd += "order by DepartmentId desc"; }
-            //else if (sortType == Sort.CityAsc) { cmd += "order by City asc"; }
-            //else if (sortType == Sort.CityDesc) { cmd += "order by City desc"; }
-            //else if (sortType == Sort.DepartmentAsc) { cmd += "order by DepartmentName asc"; }
-            //else if (sortType == Sort.DepartmentDesc) { cmd += "order by DepartmentName desc"; }
-      
             cmd += ";";
             return cmd;
         }
      
 
+        public static string SelectDepartmentsIdInPlatesByValue(string searchValue)
+        {
+            string cmd = @"select DepartmentId from dbo.FreePlates where PlateValue like N'%" + searchValue + "%' " +
+                "UNION select DepartmentId from dbo.PayablePlates where PlateValue like N'%" + searchValue + "%' ";
+            return cmd;
+        }
 
         public static string SelectDepartment(string departmentId)
         {
             string cmd = @"select * from dbo.Departments where DepartmentID = '" + departmentId + "';";
+            return cmd;
+        }
+
+        public static string SelectDepartment(int id)
+        {
+            string cmd = @"select * from dbo.Departments where Id = '" + id + "';";
             return cmd;
         }
 

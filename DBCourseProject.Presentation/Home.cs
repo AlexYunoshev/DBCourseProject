@@ -1,6 +1,7 @@
 ﻿using DBCourseProject.BusinessLogic;
 using DBCourseProject.DataAccess;
 using DBCourseProject.Domain;
+using DBCourseProject.Domain.Extentions;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -338,6 +339,66 @@ namespace DBCourseProject.Presentation
                 UpdateComboboxes();
             }
             else { MessageBox.Show("Something went wrong!"); }
+        }
+
+        private void buttonSearch_Click(object sender, EventArgs e)
+        {
+            var searchValue = textBoxSearch.Text;
+
+            allDepartments = _departmentService.GetAllDepartments(Sort, searchValue);
+            var departmentsIdByPlatesValue = _departmentService.GetDepartmentsIdInPlatesByValue(searchValue);
+
+            var departmentsByPlates = new List<Department>();
+            foreach (var id in departmentsIdByPlatesValue)
+            {
+                var department = _departmentService.GetDepartment(id);
+                departmentsByPlates.Add(department);
+            }
+
+            allDepartments.AddRange(departmentsByPlates);
+            //allDepartments = allDepartments.Distinct().ToList();
+            allDepartments = allDepartments.DistinctBy(department => department.Id).ToList();
+
+            dgvMainData.RowCount = allDepartments.Count;
+            for (int i = 0; i < allDepartments.Count; i++)
+            {
+                dgvMainData[0, i].Value = allDepartments[i].DepartmentId;
+                dgvMainData[1, i].Value = allDepartments[i].City;
+                dgvMainData[2, i].Value = allDepartments[i].DepartmentName;
+
+                //if (allDepartments[i].DepartmentId == "Ddd")
+                //{
+
+                //}
+
+                var freePlates = _departmentService.GetAllFreePlatesByDepartment(allDepartments[i].Id);
+                var payablePlates = _departmentService.GetAllPayablePlatesByDepartment(allDepartments[i].Id);
+
+                string plates = "";
+                foreach (var plate in freePlates)
+                {
+                    plates += plate.PlateValue + ", ";
+                }
+                if (plates.Contains(", "))
+                {
+                    plates = plates.Remove(plates.Length - 2, 2);
+
+                }
+                dgvMainData[3, i].Value = plates;
+
+
+                plates = "";
+                foreach (var plate in payablePlates)
+                {
+                    plates += plate.PlateValue + ", ";
+                }
+                if (plates.Contains(", "))
+                {
+                    plates = plates.Remove(plates.Length - 2, 2);
+
+                }
+                dgvMainData[4, i].Value = plates;
+            }
         }
     }
 }

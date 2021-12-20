@@ -79,17 +79,11 @@ namespace DBCourseProject.Presentation
             this.label8 = new System.Windows.Forms.Label();
             this.textBoxEditDepartmentCity = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.label14 = new System.Windows.Forms.Label();
             this.comboBoxSort = new System.Windows.Forms.ComboBox();
             this.label15 = new System.Windows.Forms.Label();
             this.buttonUpdateDataSort = new System.Windows.Forms.Button();
+            this.textBoxSearch = new System.Windows.Forms.TextBox();
+            this.buttonSearch = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMainData)).BeginInit();
             this.addDepartmentBox.SuspendLayout();
             this.addFreePlateBox.SuspendLayout();
@@ -98,7 +92,6 @@ namespace DBCourseProject.Presentation
             this.removePayablePlateBox.SuspendLayout();
             this.removeDepartmentBox.SuspendLayout();
             this.editDepartmentBox.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgvMainData
@@ -586,83 +579,6 @@ namespace DBCourseProject.Presentation
             this.label9.TabIndex = 4;
             this.label9.Text = "City";
             // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Controls.Add(this.textBox1);
-            this.groupBox1.Controls.Add(this.label12);
-            this.groupBox1.Controls.Add(this.textBox2);
-            this.groupBox1.Controls.Add(this.label13);
-            this.groupBox1.Controls.Add(this.textBox3);
-            this.groupBox1.Controls.Add(this.label14);
-            this.groupBox1.Location = new System.Drawing.Point(194, 329);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(508, 131);
-            this.groupBox1.TabIndex = 1;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Add a department";
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(260, 26);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(239, 23);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "Add";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.buttonAddDepartment_Click);
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(96, 94);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.PlaceholderText = "ТСЦ 0542 РСЦ ГСЦ МВС";
-            this.textBox1.Size = new System.Drawing.Size(403, 23);
-            this.textBox1.TabIndex = 7;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(6, 97);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(39, 15);
-            this.label12.TabIndex = 6;
-            this.label12.Text = "Name";
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(96, 59);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.PlaceholderText = "Київська обл., м.Київ";
-            this.textBox2.Size = new System.Drawing.Size(403, 23);
-            this.textBox2.TabIndex = 5;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(6, 62);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(28, 15);
-            this.label13.TabIndex = 4;
-            this.label13.Text = "City";
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(96, 26);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.PlaceholderText = "12300";
-            this.textBox3.Size = new System.Drawing.Size(158, 23);
-            this.textBox3.TabIndex = 3;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(6, 29);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(84, 15);
-            this.label14.TabIndex = 2;
-            this.label14.Text = "Department ID";
-            // 
             // comboBoxSort
             // 
             this.comboBoxSort.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -692,12 +608,32 @@ namespace DBCourseProject.Presentation
             this.buttonUpdateDataSort.UseVisualStyleBackColor = true;
             this.buttonUpdateDataSort.Click += new System.EventHandler(this.buttonUpdateDataSort_Click);
             // 
+            // textBoxSearch
+            // 
+            this.textBoxSearch.Location = new System.Drawing.Point(18, 415);
+            this.textBoxSearch.Name = "textBoxSearch";
+            this.textBoxSearch.PlaceholderText = "Search...";
+            this.textBoxSearch.Size = new System.Drawing.Size(166, 23);
+            this.textBoxSearch.TabIndex = 14;
+            // 
+            // buttonSearch
+            // 
+            this.buttonSearch.Location = new System.Drawing.Point(18, 445);
+            this.buttonSearch.Name = "buttonSearch";
+            this.buttonSearch.Size = new System.Drawing.Size(166, 23);
+            this.buttonSearch.TabIndex = 15;
+            this.buttonSearch.Text = "Search";
+            this.buttonSearch.UseVisualStyleBackColor = true;
+            this.buttonSearch.Click += new System.EventHandler(this.buttonSearch_Click);
+            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(1264, 611);
+            this.Controls.Add(this.buttonSearch);
+            this.Controls.Add(this.textBoxSearch);
             this.Controls.Add(this.buttonUpdateDataSort);
             this.Controls.Add(this.comboBoxSort);
             this.Controls.Add(this.label15);
@@ -707,7 +643,6 @@ namespace DBCourseProject.Presentation
             this.Controls.Add(this.removeFreePlateBox);
             this.Controls.Add(this.addPayeblePlateBox);
             this.Controls.Add(this.addFreePlateBox);
-            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.addDepartmentBox);
             this.Controls.Add(this.dgvMainData);
             this.MaximizeBox = false;
@@ -731,8 +666,6 @@ namespace DBCourseProject.Presentation
             this.removeDepartmentBox.PerformLayout();
             this.editDepartmentBox.ResumeLayout(false);
             this.editDepartmentBox.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -790,16 +723,10 @@ namespace DBCourseProject.Presentation
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox textBoxEditDepartmentCity;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.Label label14;
         private System.Windows.Forms.ComboBox comboBoxSort;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Button buttonUpdateDataSort;
+        private System.Windows.Forms.TextBox textBoxSearch;
+        private System.Windows.Forms.Button buttonSearch;
     }
 }
