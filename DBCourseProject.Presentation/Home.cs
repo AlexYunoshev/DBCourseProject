@@ -307,6 +307,10 @@ namespace DBCourseProject.Presentation
         {
             var sortValueComboBox = comboBoxSort.SelectedIndex;
             Sort = (Sort)sortValueComboBox;
+        }
+
+        private void buttonUpdateDataSort_Click(object sender, EventArgs e)
+        {
             LoadData(Sort);
         }
     }

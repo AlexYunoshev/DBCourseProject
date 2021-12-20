@@ -89,6 +89,7 @@ namespace DBCourseProject.Presentation
             this.label14 = new System.Windows.Forms.Label();
             this.comboBoxSort = new System.Windows.Forms.ComboBox();
             this.label15 = new System.Windows.Forms.Label();
+            this.buttonUpdateDataSort = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMainData)).BeginInit();
             this.addDepartmentBox.SuspendLayout();
             this.addFreePlateBox.SuspendLayout();
@@ -680,12 +681,23 @@ namespace DBCourseProject.Presentation
             this.label15.TabIndex = 11;
             this.label15.Text = "Sort";
             // 
+            // buttonUpdateDataSort
+            // 
+            this.buttonUpdateDataSort.Location = new System.Drawing.Point(18, 379);
+            this.buttonUpdateDataSort.Name = "buttonUpdateDataSort";
+            this.buttonUpdateDataSort.Size = new System.Drawing.Size(166, 23);
+            this.buttonUpdateDataSort.TabIndex = 13;
+            this.buttonUpdateDataSort.Text = "Update data";
+            this.buttonUpdateDataSort.UseVisualStyleBackColor = true;
+            this.buttonUpdateDataSort.Click += new System.EventHandler(this.buttonUpdateDataSort_Click);
+            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(1264, 611);
+            this.Controls.Add(this.buttonUpdateDataSort);
             this.Controls.Add(this.comboBoxSort);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.editDepartmentBox);
@@ -787,5 +799,6 @@ namespace DBCourseProject.Presentation
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.ComboBox comboBoxSort;
         private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Button buttonUpdateDataSort;
     }
 }

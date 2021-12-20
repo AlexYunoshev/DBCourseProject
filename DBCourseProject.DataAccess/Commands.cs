@@ -14,12 +14,34 @@ namespace DBCourseProject.DataAccess
             string cmd = "";
             cmd = @"select * from dbo.Departments ";
 
-            if (sortType == Sort.IdAsc) { cmd += "order by DepartmentId asc"; }
-            else if (sortType == Sort.IdDesc) { cmd += "order by DepartmentId desc"; }
-            else if (sortType == Sort.IdDesc) { cmd += "order by City asc"; }
-            else if (sortType == Sort.IdDesc) { cmd += "order by City desc"; }
-            else if (sortType == Sort.IdDesc) { cmd += "order by DepartmentName asc"; }
-            else if (sortType == Sort.IdDesc) { cmd += "order by DepartmentName desc"; }
+            switch (sortType)
+            {
+                case Sort.IdAsc:
+                    cmd += "order by DepartmentId asc";
+                    break;
+                case Sort.IdDesc:
+                    cmd += "order by DepartmentId desc";
+                    break;
+                case Sort.CityAsc:
+                    cmd += "order by City asc";
+                    break;
+                case Sort.CityDesc:
+                    cmd += "order by City desc";
+                    break;
+                case Sort.DepartmentAsc:
+                    cmd += "order by DepartmentName asc";
+                    break;
+                case Sort.DepartmentDesc:
+                    cmd += "order by DepartmentName desc";
+                    break;
+            }
+
+            //if (sortType == Sort.IdAsc) { cmd += "order by DepartmentId asc"; }
+            //else if (sortType == Sort.IdDesc) { cmd += "order by DepartmentId desc"; }
+            //else if (sortType == Sort.CityAsc) { cmd += "order by City asc"; }
+            //else if (sortType == Sort.CityDesc) { cmd += "order by City desc"; }
+            //else if (sortType == Sort.DepartmentAsc) { cmd += "order by DepartmentName asc"; }
+            //else if (sortType == Sort.DepartmentDesc) { cmd += "order by DepartmentName desc"; }
       
             cmd += ";";
             return cmd;
