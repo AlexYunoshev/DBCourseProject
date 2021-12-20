@@ -68,9 +68,27 @@ namespace DBCourseProject.Presentation
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.removeDepartmentBox = new System.Windows.Forms.GroupBox();
+            this.comboBoxRemoveDepartmentId = new System.Windows.Forms.ComboBox();
             this.buttonRemoveDepartment = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
-            this.comboBoxRemoveDepartmentId = new System.Windows.Forms.ComboBox();
+            this.editDepartmentBox = new System.Windows.Forms.GroupBox();
+            this.comboBoxEditDepartmentId = new System.Windows.Forms.ComboBox();
+            this.buttonUpdateDepartment = new System.Windows.Forms.Button();
+            this.label11 = new System.Windows.Forms.Label();
+            this.textBoxEditDepartmentName = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.textBoxEditDepartmentCity = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.comboBoxSort = new System.Windows.Forms.ComboBox();
+            this.label15 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMainData)).BeginInit();
             this.addDepartmentBox.SuspendLayout();
             this.addFreePlateBox.SuspendLayout();
@@ -78,6 +96,8 @@ namespace DBCourseProject.Presentation
             this.removeFreePlateBox.SuspendLayout();
             this.removePayablePlateBox.SuspendLayout();
             this.removeDepartmentBox.SuspendLayout();
+            this.editDepartmentBox.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgvMainData
@@ -138,18 +158,18 @@ namespace DBCourseProject.Presentation
             this.addDepartmentBox.Controls.Add(this.labelDepartmentCity);
             this.addDepartmentBox.Controls.Add(this.textBoxAddDepartmentId);
             this.addDepartmentBox.Controls.Add(this.labelDepartmentId);
-            this.addDepartmentBox.Location = new System.Drawing.Point(12, 329);
+            this.addDepartmentBox.Location = new System.Drawing.Point(200, 329);
             this.addDepartmentBox.Name = "addDepartmentBox";
-            this.addDepartmentBox.Size = new System.Drawing.Size(266, 162);
+            this.addDepartmentBox.Size = new System.Drawing.Size(508, 131);
             this.addDepartmentBox.TabIndex = 1;
             this.addDepartmentBox.TabStop = false;
             this.addDepartmentBox.Text = "Add a department";
             // 
             // buttonAddDepartment
             // 
-            this.buttonAddDepartment.Location = new System.Drawing.Point(6, 128);
+            this.buttonAddDepartment.Location = new System.Drawing.Point(260, 26);
             this.buttonAddDepartment.Name = "buttonAddDepartment";
-            this.buttonAddDepartment.Size = new System.Drawing.Size(248, 23);
+            this.buttonAddDepartment.Size = new System.Drawing.Size(239, 23);
             this.buttonAddDepartment.TabIndex = 8;
             this.buttonAddDepartment.Text = "Add";
             this.buttonAddDepartment.UseVisualStyleBackColor = true;
@@ -160,7 +180,7 @@ namespace DBCourseProject.Presentation
             this.textBoxAddDepartmentName.Location = new System.Drawing.Point(96, 94);
             this.textBoxAddDepartmentName.Name = "textBoxAddDepartmentName";
             this.textBoxAddDepartmentName.PlaceholderText = "ТСЦ 0542 РСЦ ГСЦ МВС";
-            this.textBoxAddDepartmentName.Size = new System.Drawing.Size(158, 23);
+            this.textBoxAddDepartmentName.Size = new System.Drawing.Size(403, 23);
             this.textBoxAddDepartmentName.TabIndex = 7;
             // 
             // labelDepartmentName
@@ -177,7 +197,7 @@ namespace DBCourseProject.Presentation
             this.textBoxAddDepartmentCity.Location = new System.Drawing.Point(96, 59);
             this.textBoxAddDepartmentCity.Name = "textBoxAddDepartmentCity";
             this.textBoxAddDepartmentCity.PlaceholderText = "Київська обл., м.Київ";
-            this.textBoxAddDepartmentCity.Size = new System.Drawing.Size(158, 23);
+            this.textBoxAddDepartmentCity.Size = new System.Drawing.Size(403, 23);
             this.textBoxAddDepartmentCity.TabIndex = 5;
             // 
             // labelDepartmentCity
@@ -213,7 +233,7 @@ namespace DBCourseProject.Presentation
             this.addFreePlateBox.Controls.Add(this.textBoxAddFreePlateValue);
             this.addFreePlateBox.Controls.Add(this.labelFreePlateValue);
             this.addFreePlateBox.Controls.Add(this.label3);
-            this.addFreePlateBox.Location = new System.Drawing.Point(316, 329);
+            this.addFreePlateBox.Location = new System.Drawing.Point(714, 329);
             this.addFreePlateBox.Name = "addFreePlateBox";
             this.addFreePlateBox.Size = new System.Drawing.Size(266, 117);
             this.addFreePlateBox.TabIndex = 2;
@@ -272,7 +292,7 @@ namespace DBCourseProject.Presentation
             this.addPayeblePlateBox.Controls.Add(this.textBoxAddPayablePlateValue);
             this.addPayeblePlateBox.Controls.Add(this.label1);
             this.addPayeblePlateBox.Controls.Add(this.label2);
-            this.addPayeblePlateBox.Location = new System.Drawing.Point(623, 329);
+            this.addPayeblePlateBox.Location = new System.Drawing.Point(986, 329);
             this.addPayeblePlateBox.Name = "addPayeblePlateBox";
             this.addPayeblePlateBox.Size = new System.Drawing.Size(266, 117);
             this.addPayeblePlateBox.TabIndex = 3;
@@ -331,7 +351,7 @@ namespace DBCourseProject.Presentation
             this.removeFreePlateBox.Controls.Add(this.buttonRemoveFreePlate);
             this.removeFreePlateBox.Controls.Add(this.label4);
             this.removeFreePlateBox.Controls.Add(this.label5);
-            this.removeFreePlateBox.Location = new System.Drawing.Point(316, 474);
+            this.removeFreePlateBox.Location = new System.Drawing.Point(714, 474);
             this.removeFreePlateBox.Name = "removeFreePlateBox";
             this.removeFreePlateBox.Size = new System.Drawing.Size(266, 117);
             this.removeFreePlateBox.TabIndex = 4;
@@ -392,7 +412,7 @@ namespace DBCourseProject.Presentation
             this.removePayablePlateBox.Controls.Add(this.buttonRemovePayablePlate);
             this.removePayablePlateBox.Controls.Add(this.label6);
             this.removePayablePlateBox.Controls.Add(this.label7);
-            this.removePayablePlateBox.Location = new System.Drawing.Point(623, 474);
+            this.removePayablePlateBox.Location = new System.Drawing.Point(986, 474);
             this.removePayablePlateBox.Name = "removePayablePlateBox";
             this.removePayablePlateBox.Size = new System.Drawing.Size(266, 117);
             this.removePayablePlateBox.TabIndex = 5;
@@ -451,18 +471,27 @@ namespace DBCourseProject.Presentation
             this.removeDepartmentBox.Controls.Add(this.comboBoxRemoveDepartmentId);
             this.removeDepartmentBox.Controls.Add(this.buttonRemoveDepartment);
             this.removeDepartmentBox.Controls.Add(this.label10);
-            this.removeDepartmentBox.Location = new System.Drawing.Point(12, 507);
+            this.removeDepartmentBox.Location = new System.Drawing.Point(12, 483);
             this.removeDepartmentBox.Name = "removeDepartmentBox";
-            this.removeDepartmentBox.Size = new System.Drawing.Size(266, 84);
+            this.removeDepartmentBox.Size = new System.Drawing.Size(172, 108);
             this.removeDepartmentBox.TabIndex = 6;
             this.removeDepartmentBox.TabStop = false;
             this.removeDepartmentBox.Text = "Remove a department";
             // 
+            // comboBoxRemoveDepartmentId
+            // 
+            this.comboBoxRemoveDepartmentId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxRemoveDepartmentId.FormattingEnabled = true;
+            this.comboBoxRemoveDepartmentId.Location = new System.Drawing.Point(6, 47);
+            this.comboBoxRemoveDepartmentId.Name = "comboBoxRemoveDepartmentId";
+            this.comboBoxRemoveDepartmentId.Size = new System.Drawing.Size(158, 23);
+            this.comboBoxRemoveDepartmentId.TabIndex = 10;
+            // 
             // buttonRemoveDepartment
             // 
-            this.buttonRemoveDepartment.Location = new System.Drawing.Point(6, 55);
+            this.buttonRemoveDepartment.Location = new System.Drawing.Point(6, 76);
             this.buttonRemoveDepartment.Name = "buttonRemoveDepartment";
-            this.buttonRemoveDepartment.Size = new System.Drawing.Size(248, 23);
+            this.buttonRemoveDepartment.Size = new System.Drawing.Size(158, 23);
             this.buttonRemoveDepartment.TabIndex = 8;
             this.buttonRemoveDepartment.Text = "Remove";
             this.buttonRemoveDepartment.UseVisualStyleBackColor = true;
@@ -477,26 +506,195 @@ namespace DBCourseProject.Presentation
             this.label10.TabIndex = 2;
             this.label10.Text = "Department ID";
             // 
-            // comboBoxRemoveDepartmentId
+            // editDepartmentBox
             // 
-            this.comboBoxRemoveDepartmentId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxRemoveDepartmentId.FormattingEnabled = true;
-            this.comboBoxRemoveDepartmentId.Location = new System.Drawing.Point(96, 21);
-            this.comboBoxRemoveDepartmentId.Name = "comboBoxRemoveDepartmentId";
-            this.comboBoxRemoveDepartmentId.Size = new System.Drawing.Size(158, 23);
-            this.comboBoxRemoveDepartmentId.TabIndex = 10;
+            this.editDepartmentBox.Controls.Add(this.comboBoxEditDepartmentId);
+            this.editDepartmentBox.Controls.Add(this.buttonUpdateDepartment);
+            this.editDepartmentBox.Controls.Add(this.label11);
+            this.editDepartmentBox.Controls.Add(this.textBoxEditDepartmentName);
+            this.editDepartmentBox.Controls.Add(this.label8);
+            this.editDepartmentBox.Controls.Add(this.textBoxEditDepartmentCity);
+            this.editDepartmentBox.Controls.Add(this.label9);
+            this.editDepartmentBox.Location = new System.Drawing.Point(194, 466);
+            this.editDepartmentBox.Name = "editDepartmentBox";
+            this.editDepartmentBox.Size = new System.Drawing.Size(508, 125);
+            this.editDepartmentBox.TabIndex = 7;
+            this.editDepartmentBox.TabStop = false;
+            this.editDepartmentBox.Text = "Edit a department";
+            // 
+            // comboBoxEditDepartmentId
+            // 
+            this.comboBoxEditDepartmentId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxEditDepartmentId.FormattingEnabled = true;
+            this.comboBoxEditDepartmentId.Location = new System.Drawing.Point(96, 26);
+            this.comboBoxEditDepartmentId.Name = "comboBoxEditDepartmentId";
+            this.comboBoxEditDepartmentId.Size = new System.Drawing.Size(158, 23);
+            this.comboBoxEditDepartmentId.TabIndex = 12;
+            this.comboBoxEditDepartmentId.SelectedIndexChanged += new System.EventHandler(this.comboBoxEditDepartmentId_SelectedIndexChanged);
+            // 
+            // buttonUpdateDepartment
+            // 
+            this.buttonUpdateDepartment.Location = new System.Drawing.Point(260, 26);
+            this.buttonUpdateDepartment.Name = "buttonUpdateDepartment";
+            this.buttonUpdateDepartment.Size = new System.Drawing.Size(239, 23);
+            this.buttonUpdateDepartment.TabIndex = 8;
+            this.buttonUpdateDepartment.Text = "Update";
+            this.buttonUpdateDepartment.UseVisualStyleBackColor = true;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(6, 29);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(84, 15);
+            this.label11.TabIndex = 11;
+            this.label11.Text = "Department ID";
+            // 
+            // textBoxEditDepartmentName
+            // 
+            this.textBoxEditDepartmentName.Location = new System.Drawing.Point(96, 94);
+            this.textBoxEditDepartmentName.Name = "textBoxEditDepartmentName";
+            this.textBoxEditDepartmentName.PlaceholderText = "ТСЦ 0542 РСЦ ГСЦ МВС";
+            this.textBoxEditDepartmentName.Size = new System.Drawing.Size(403, 23);
+            this.textBoxEditDepartmentName.TabIndex = 7;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(6, 97);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(39, 15);
+            this.label8.TabIndex = 6;
+            this.label8.Text = "Name";
+            // 
+            // textBoxEditDepartmentCity
+            // 
+            this.textBoxEditDepartmentCity.Location = new System.Drawing.Point(96, 59);
+            this.textBoxEditDepartmentCity.Name = "textBoxEditDepartmentCity";
+            this.textBoxEditDepartmentCity.PlaceholderText = "Київська обл., м.Київ";
+            this.textBoxEditDepartmentCity.Size = new System.Drawing.Size(403, 23);
+            this.textBoxEditDepartmentCity.TabIndex = 5;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(6, 62);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(28, 15);
+            this.label9.TabIndex = 4;
+            this.label9.Text = "City";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.label12);
+            this.groupBox1.Controls.Add(this.textBox2);
+            this.groupBox1.Controls.Add(this.label13);
+            this.groupBox1.Controls.Add(this.textBox3);
+            this.groupBox1.Controls.Add(this.label14);
+            this.groupBox1.Location = new System.Drawing.Point(194, 329);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(508, 131);
+            this.groupBox1.TabIndex = 1;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Add a department";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(260, 26);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(239, 23);
+            this.button1.TabIndex = 8;
+            this.button1.Text = "Add";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.buttonAddDepartment_Click);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(96, 94);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.PlaceholderText = "ТСЦ 0542 РСЦ ГСЦ МВС";
+            this.textBox1.Size = new System.Drawing.Size(403, 23);
+            this.textBox1.TabIndex = 7;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(6, 97);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(39, 15);
+            this.label12.TabIndex = 6;
+            this.label12.Text = "Name";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(96, 59);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.PlaceholderText = "Київська обл., м.Київ";
+            this.textBox2.Size = new System.Drawing.Size(403, 23);
+            this.textBox2.TabIndex = 5;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(6, 62);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(28, 15);
+            this.label13.TabIndex = 4;
+            this.label13.Text = "City";
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(96, 26);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.PlaceholderText = "12300";
+            this.textBox3.Size = new System.Drawing.Size(158, 23);
+            this.textBox3.TabIndex = 3;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(6, 29);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(84, 15);
+            this.label14.TabIndex = 2;
+            this.label14.Text = "Department ID";
+            // 
+            // comboBoxSort
+            // 
+            this.comboBoxSort.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxSort.FormattingEnabled = true;
+            this.comboBoxSort.Location = new System.Drawing.Point(18, 350);
+            this.comboBoxSort.Name = "comboBoxSort";
+            this.comboBoxSort.Size = new System.Drawing.Size(166, 23);
+            this.comboBoxSort.TabIndex = 12;
+            this.comboBoxSort.SelectedIndexChanged += new System.EventHandler(this.comboBoxSort_SelectedIndexChanged);
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(18, 332);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(28, 15);
+            this.label15.TabIndex = 11;
+            this.label15.Text = "Sort";
             // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ClientSize = new System.Drawing.Size(1264, 681);
+            this.ClientSize = new System.Drawing.Size(1264, 611);
+            this.Controls.Add(this.comboBoxSort);
+            this.Controls.Add(this.label15);
+            this.Controls.Add(this.editDepartmentBox);
             this.Controls.Add(this.removeDepartmentBox);
             this.Controls.Add(this.removePayablePlateBox);
             this.Controls.Add(this.removeFreePlateBox);
             this.Controls.Add(this.addPayeblePlateBox);
             this.Controls.Add(this.addFreePlateBox);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.addDepartmentBox);
             this.Controls.Add(this.dgvMainData);
             this.MaximizeBox = false;
@@ -518,7 +716,12 @@ namespace DBCourseProject.Presentation
             this.removePayablePlateBox.PerformLayout();
             this.removeDepartmentBox.ResumeLayout(false);
             this.removeDepartmentBox.PerformLayout();
+            this.editDepartmentBox.ResumeLayout(false);
+            this.editDepartmentBox.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -566,5 +769,23 @@ namespace DBCourseProject.Presentation
         private System.Windows.Forms.ComboBox comboBoxRemoveDepartmentId;
         private System.Windows.Forms.Button buttonRemoveDepartment;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.GroupBox editDepartmentBox;
+        private System.Windows.Forms.ComboBox comboBoxEditDepartmentId;
+        private System.Windows.Forms.Button buttonUpdateDepartment;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox textBoxEditDepartmentName;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox textBoxEditDepartmentCity;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.ComboBox comboBoxSort;
+        private System.Windows.Forms.Label label15;
     }
 }

@@ -22,6 +22,14 @@ namespace DBCourseProject.BusinessLogic
             return count;
         }
 
+        public int UpdateDepartment(Department department)
+        {
+            query = Commands.UpdateDepartment(department);
+            ConnectedData.SetCommand(query);
+            int count = ConnectedData.UpdateData();
+            return count;
+        }
+
         public int InsertFreePlate(FreePlate plate)
         {
             query = Commands.InsertFreePlate(plate);
@@ -99,13 +107,14 @@ namespace DBCourseProject.BusinessLogic
             query = Commands.RemoveDepartmentById(departmentDB.Id);
             ConnectedData.SetCommand(query);
             return ConnectedData.UpdateData();
-
         }
 
-        public List<Department> GetAllDepartments()
+        public List<Department> GetAllDepartments(Sort sortType)
         {
             var departments = new List<Department>();
-            query = Commands.SelectDepartments();
+            query = Commands.SelectDepartments(sortType);
+
+            
             ConnectedData.SetCommand(query);
             int[] size = new int[2];
             size = ConnectedData.GetRowAndColumnCount();

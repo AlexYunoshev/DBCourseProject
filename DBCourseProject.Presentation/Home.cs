@@ -19,6 +19,8 @@ namespace DBCourseProject.Presentation
 
         private List<Department> allDepartments = new List<Department>();
 
+        private Sort Sort { get; set; } = Sort.IdAsc;
+
         public Home(DepartmentService departmentService)
         {
             _departmentService = departmentService;
@@ -27,7 +29,8 @@ namespace DBCourseProject.Presentation
 
         private void Home_Load(object sender, EventArgs e)
         {
-            LoadData();
+            InitializeSortComboBox();
+            LoadData(Sort);
             UpdateComboboxes();
         }
 
@@ -39,9 +42,20 @@ namespace DBCourseProject.Presentation
         //    dgvMainData[2, indexOfLastValue + 1].Value = department.DepartmentName;
         //}
 
-        private void LoadData()
+        private void InitializeSortComboBox()
         {
-            allDepartments = _departmentService.GetAllDepartments();
+            comboBoxSort.Items.Add("Id ↑");
+            comboBoxSort.Items.Add("Id ↓");
+            comboBoxSort.Items.Add("City ↑");
+            comboBoxSort.Items.Add("City ↓");
+            comboBoxSort.Items.Add("Department ↑");
+            comboBoxSort.Items.Add("Department ↓");
+            comboBoxSort.SelectedIndex = 0;
+        }
+
+        private void LoadData(Sort sortType)
+        {
+            allDepartments = _departmentService.GetAllDepartments(sortType);
 
             dgvMainData.RowCount = allDepartments.Count;
             for (int i = 0; i < allDepartments.Count; i++)
@@ -50,10 +64,10 @@ namespace DBCourseProject.Presentation
                 dgvMainData[1, i].Value = allDepartments[i].City;
                 dgvMainData[2, i].Value = allDepartments[i].DepartmentName;
 
-                if (allDepartments[i].DepartmentId == "Ddd")
-                {
+                //if (allDepartments[i].DepartmentId == "Ddd")
+                //{
 
-                }
+                //}
 
                 var freePlates = _departmentService.GetAllFreePlatesByDepartment(allDepartments[i].Id);
                 var payablePlates = _departmentService.GetAllPayablePlatesByDepartment(allDepartments[i].Id);
@@ -87,7 +101,7 @@ namespace DBCourseProject.Presentation
 
         private void UpdateComboboxes()
         {
-            if (allDepartments.Count < 0) { var allDepartments = _departmentService.GetAllDepartments(); }
+            if (allDepartments.Count < 0) { var allDepartments = _departmentService.GetAllDepartments(Sort.IdAsc); }
 
             foreach (var department in allDepartments)
             {
@@ -98,6 +112,7 @@ namespace DBCourseProject.Presentation
                 comboBoxRemovePayablePlateDepartmentId.Items.Add(department.DepartmentId);
 
                 comboBoxRemoveDepartmentId.Items.Add(department.DepartmentId);
+                comboBoxEditDepartmentId.Items.Add(department.DepartmentId);
             }
 
             if (comboBoxAddFreePlateDepartmentId.Items.Count > 0)
@@ -124,6 +139,11 @@ namespace DBCourseProject.Presentation
             {
                 comboBoxRemoveDepartmentId.SelectedIndex = 0;
             }
+
+            if (comboBoxEditDepartmentId.Items.Count > 0)
+            {
+                comboBoxEditDepartmentId.SelectedIndex = 0;
+            }
         }
 
         private void buttonAddDepartment_Click(object sender, EventArgs e)
@@ -142,7 +162,7 @@ namespace DBCourseProject.Presentation
             var insertItemsCount = _departmentService.InsertDepartment(department);
             if (insertItemsCount > 0) {
                 MessageBox.Show("Done");
-                LoadData();
+                LoadData(Sort);
                 UpdateComboboxes();
             }
             else { MessageBox.Show("Something went wrong!"); }
@@ -164,7 +184,7 @@ namespace DBCourseProject.Presentation
             if (insertItemsCount > 0)
             {
                 MessageBox.Show("Done");
-                LoadData();
+                LoadData(Sort);
                 UpdateComboboxes();
                 textBoxAddFreePlateValue.Text = "";
             }
@@ -186,7 +206,7 @@ namespace DBCourseProject.Presentation
             if (insertItemsCount > 0)
             {
                 MessageBox.Show("Done");
-                LoadData();
+                LoadData(Sort);
                 UpdateComboboxes();
                 textBoxAddPayablePlateValue.Text = "";
             }
@@ -242,7 +262,7 @@ namespace DBCourseProject.Presentation
             if (removedCount > 0)
             {
                 MessageBox.Show("Done");
-                LoadData();
+                LoadData(Sort);
                 UpdateComboboxes();
             }
             else { MessageBox.Show("Something went wrong!"); }
@@ -255,7 +275,7 @@ namespace DBCourseProject.Presentation
             if (removedCount > 0)
             {
                 MessageBox.Show("Done");
-                LoadData();
+                LoadData(Sort);
                 UpdateComboboxes();
             }
             else { MessageBox.Show("Something went wrong!"); }
@@ -268,11 +288,26 @@ namespace DBCourseProject.Presentation
             if (removedCount > 0)
             {
                 MessageBox.Show("Done");
-                LoadData();
+                LoadData(Sort);
                 UpdateComboboxes();
             }
             else { MessageBox.Show("Something went wrong!"); }
 
+        }
+
+        private void comboBoxEditDepartmentId_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var departmentIdComboBox = comboBoxEditDepartmentId.SelectedItem.ToString();
+            var department = _departmentService.GetDepartment(departmentIdComboBox);
+            textBoxEditDepartmentCity.Text = department.City;
+            textBoxEditDepartmentName.Text = department.DepartmentName;
+        }
+
+        private void comboBoxSort_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var sortValueComboBox = comboBoxSort.SelectedIndex;
+            Sort = (Sort)sortValueComboBox;
+            LoadData(Sort);
         }
     }
 }

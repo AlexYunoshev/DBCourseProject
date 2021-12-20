@@ -9,11 +9,23 @@ namespace DBCourseProject.DataAccess
 {
     public static class Commands
     {
-        public static string SelectDepartments()
+        public static string SelectDepartments(Sort sortType)
         {
-            string cmd = @"select * from dbo.Departments;";
+            string cmd = "";
+            cmd = @"select * from dbo.Departments ";
+
+            if (sortType == Sort.IdAsc) { cmd += "order by DepartmentId asc"; }
+            else if (sortType == Sort.IdDesc) { cmd += "order by DepartmentId desc"; }
+            else if (sortType == Sort.IdDesc) { cmd += "order by City asc"; }
+            else if (sortType == Sort.IdDesc) { cmd += "order by City desc"; }
+            else if (sortType == Sort.IdDesc) { cmd += "order by DepartmentName asc"; }
+            else if (sortType == Sort.IdDesc) { cmd += "order by DepartmentName desc"; }
+      
+            cmd += ";";
             return cmd;
         }
+     
+
 
         public static string SelectDepartment(string departmentId)
         {
@@ -40,6 +52,16 @@ namespace DBCourseProject.DataAccess
             string cmd = @"insert into 
             dbo.Departments(City, DepartmentName, DepartmentId)
             values(N'" + department.City + "', N'" + department.DepartmentName + "', N'"  + department.DepartmentId + "')";
+            return cmd;
+        }
+        public static string UpdateDepartment(Department department)
+        {
+            department.City = department.City.Replace("'", "\"");
+            string cmd = @"update dbo.Departments set
+            City = '" + department.City + "', " +
+            "DepartmentName = '" + department.DepartmentName + "', " +
+            "DepartmentId = '" + department.DepartmentId + "', " +
+            "where Id = " + department.Id + ";";
             return cmd;
         }
 
@@ -94,5 +116,7 @@ namespace DBCourseProject.DataAccess
             dbo.Departments where Id = " + Id;
             return cmd;
         }
+
+        
     }
 }
