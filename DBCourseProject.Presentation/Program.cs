@@ -10,7 +10,7 @@ using DBCourseProject.Domain;
 
 namespace DBCourseProject.Presentation
 {
-    static class Program
+    public static class Program
     {
         private const string filePath = @"D:\DesktopFolders\ProjectsProgr\ASP NET Core\DBCourseProject\DBCourseProject.DataAccess\File.csv";
 

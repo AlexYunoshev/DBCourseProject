@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="DBCourseProject.BusinessLogic.DepartmentService">
+    <Position X="0.75" Y="0.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAUAAACAAAQAAAQAAAAAABAAAABBEAAARAIAAAAABM=</HashCode>
+      <FileName>DepartmentService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBCourseProject.BusinessLogic.IOService">
+    <Position X="0.75" Y="5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAACAAAAAIAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IOService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBCourseProject.Domain.Department">
+    <Position X="4.5" Y="0.5" Width="1.75" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="DBCourseProject.DataAccess.Commands">
+    <Position X="4.25" Y="3.25" Width="2.75" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="DBCourseProject.DataAccess.ConnectedData">
+    <Position X="7.5" Y="3.25" Width="2.75" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="DBCourseProject.Domain.FreePlate">
+    <Position X="8.75" Y="0.5" Width="1.75" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="DBCourseProject.Domain.PayablePlate">
+    <Position X="11" Y="0.5" Width="1.75" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="DBCourseProject.Domain.Sort">
+    <Position X="6.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
