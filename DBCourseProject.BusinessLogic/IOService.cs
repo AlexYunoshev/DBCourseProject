@@ -80,7 +80,6 @@ namespace DBCourseProject.BusinessLogic
                     var freePlate = new FreePlate() 
                     { 
                         PlateValue = number,
-                        Department = department
                     };
                     freePlates.Add(freePlate);    
                 }
@@ -93,7 +92,6 @@ namespace DBCourseProject.BusinessLogic
                     var payablePlate = new PayablePlate()
                     {
                         PlateValue = number,
-                        Department = department
                     };
                     paymentPlates.Add(payablePlate);
                 }
