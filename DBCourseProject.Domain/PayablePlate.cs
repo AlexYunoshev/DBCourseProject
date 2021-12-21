@@ -10,8 +10,6 @@ namespace DBCourseProject.Domain
     {
         public int PlateId { get; set; }
         public string PlateValue { get; set; }
-
         public int DepartmentId { get; set; }
-        public Department Department { get; set; }
     }
 }
